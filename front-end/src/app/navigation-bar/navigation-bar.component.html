@@ -1,0 +1,137 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light">
+
+
+  <!-- Collection of nav links, forms, and other content for toggling -->
+
+  <div id="" class="navbar navbar-expand justify-content-start">
+
+
+    <div *ngIf="screenWidth > 1380">
+    <form class="navbar-form form-inline" [formGroup]="searchForm" (ngSubmit)="search()">
+      <div class="input-group search-box">
+        <span class="input-group-addon"><i class="material-icons">&#xE8B6;</i></span>
+        <input type="text" id="search" placeholder="Search" autocomplete="off" [formControlName]="'query_input'">
+      </div>
+    </form>
+      <a href="#" class="navbar-brand"><img src="/assets/images.png" alt="image"></a>
+    </div>
+
+    <!-- tabs -->
+    <ul class="navbar-nav mx-auto mb-2 mb-lg-0 ">
+
+      <div *ngIf="screenWidth < 1380" class="tt">
+
+        <li class="nav-item">
+          <a href="#" class="navbar-brand-small"><img src="/assets/images.png" alt="image"></a>
+          <div class="search-container">
+            <form [formGroup]="searchForm" (ngSubmit)="search()">
+              <input class="search expandright" id="searchright" type="search" name="q" placeholder="Search" autocomplete="off" [formControlName]="'query_input'">
+              <label class="button searchbutton" for="searchright"><span class="mglass"><i class="fa fa-search" aria-hidden="true"></i></span></label>
+            </form>
+          </div>
+
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/home" routerLinkActive="active_route">
+            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mynetwork" routerLinkActive="active_route">
+            <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/jobs" routerLinkActive="active_route">
+            <i class="fa fa-briefcase fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mysettings" routerLinkActive="active_route">
+            <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/messages" routerLinkActive="active_route">
+            <i class="fa fa-comments fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/personal-Info" routerLinkActive="active_route">
+            <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/notifications" routerLinkActive="active_route">
+            <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      </div>
+
+      <div *ngIf="screenWidth >= 1380">
+
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" routerLink="/home" routerLinkActive="active_route">
+            <i class="fa fa-home fa-2x" aria-hidden="true"></i>
+            <span>Home</span>
+          </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/mynetwork" routerLinkActive="active_route">
+          <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+          <span>My Network</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" routerLink="/jobs" routerLinkActive="active_route">
+          <i class="fa fa-briefcase fa-2x" aria-hidden="true"></i>
+          <span>Jobs</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/mysettings" routerLinkActive="active_route">
+          <i class="fa fa-cog fa-2x" aria-hidden="true"></i>
+          <span>Settings</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/messages" routerLinkActive="active_route">
+          <i class="fa fa-comments fa-2x" aria-hidden="true"></i>
+          <span>Messages</span>
+        </a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/personal-Info" routerLinkActive="active_route">
+          <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+          <span>Personal Info</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/notifications" routerLinkActive="active_route">
+          <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+          <span>Notifications</span>
+        </a>
+      </li>
+
+      </div>
+
+    </ul>
+    </div>
+</nav>

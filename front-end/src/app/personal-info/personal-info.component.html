@@ -1,0 +1,76 @@
+<app-navigation-bar></app-navigation-bar>
+
+<body>
+
+
+<div class="big-box">
+
+  <form class="login" [formGroup]="infoForm" (ngSubmit)="changePersonalinfo()">
+  <div class="f-box">
+  <div style="font-weight: bold;font-family: 'Yanone Kaffeesatz', sans-serif;font-size: 23px"> Work Experience: </div>
+    <br>
+
+
+      <textarea id="work_elem" formControlName="work" rows="3" placeholder="Write your Work Experience"></textarea>
+
+
+
+  </div>
+
+  <div class="s-box">
+    <div style="font-weight: bold;font-family: 'Yanone Kaffeesatz', sans-serif;font-size: 23px"> Studies: </div>
+    <br>
+
+
+      <textarea id="stud_elem" formControlName="studies" rows="3" placeholder="Write your Studies"></textarea>
+
+
+
+  </div>
+
+  <div class="t-box">
+    <br>
+    <div style="font-weight: bold;font-family: 'Yanone Kaffeesatz', sans-serif;font-size: 23px"> Abilities: </div>
+    <br>
+
+
+
+      <div *ngFor="let s of abilities; let i = index">
+        {{ s }}
+        <button  (click)="removeAbility(i)" id="mdiv">
+          <div class="mdiv">
+            <div class="md">   </div>
+          </div>
+      </button>
+      </div>
+      <input type="text" #ability_input placeholder="enter an ability (ex. web-dev)" formControlName="abilities" rows="3" />
+      <button class="addKeyword" (click)="addAbility(ability_input)"> add an ability  </button>
+
+  </div>
+
+    <div *ngIf="screenWidth >= 1275">
+      <button  class="animated-border-button">Publish</button>
+    </div>
+    <div *ngIf="screenWidth < 1275">
+      <br>
+      <button  class="button">Publish</button>
+    </div>
+  <!--  publish button  -->
+
+
+  </form>
+</div>
+
+
+<div *ngIf="screenWidth >= 1275">
+  <app-public-buttons class="test"></app-public-buttons>
+</div>
+
+<div *ngIf="screenWidth < 1275">
+  <app-public-buttons class="resize-buttons"></app-public-buttons>
+</div>
+
+
+
+
+</body>

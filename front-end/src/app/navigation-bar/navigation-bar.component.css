@@ -1,0 +1,380 @@
+/*custom fonts*/
+
+
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css";
+
+
+
+.tt{
+  position: relative;
+  align-items: center;
+  text-align: center;
+  right: 65%;
+  width: 600px;
+}
+
+body{
+  background-color: #f3f2ef;
+}
+
+.navbar {
+  background-color: #ffffff;
+  width: 100%;
+  height: 87px;
+  border-bottom: 1px solid #d9d9d9;
+  /*border: 1px solid #c1c1c1;*/
+  opacity: 100%;
+}
+
+.nav-item{
+  position: relative;
+  left: 300px;
+  display:inline-block;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+
+
+
+@media only screen and (min-width: 560px) {
+  .navbar .navbar-nav .nav-link {
+    padding: 1em 0.7em;
+  }
+  .navbar {
+    padding: 0;
+  }
+  .navbar .navbar-brand {
+    padding: 0 0.7em;
+  }
+
+}
+
+
+
+.active_route {
+  border-bottom: 1px solid #000000;
+  color: #000000;
+  padding-bottom: 12px;
+  opacity: 100%;
+  text-decoration: #000000;
+}
+
+
+.navbar img {
+  /*border-radius: 50%;*/
+  /*width: 36px;*/
+  /*height: 36px;*/
+  margin-right: 10px;
+  height: 41px;
+  top: -4px;
+  size: 45px;
+
+  position: relative;
+  /*left: 150px;*/
+}
+
+
+.navbar .navbar-brand {
+  position: relative;
+  height: 34px;
+  left: 100px;
+  color: #000000;
+  padding-left: 0;
+  padding-right: 50px;
+  font-size: 24px;
+}
+
+
+.navbar .navbar-brand:hover, .navbar .navbar-brand:focus {
+  color: #7d7d7d;
+}
+
+.navbar .navbar-brand i {
+  font-size: 25px;
+  margin-right: 5px;
+}
+
+.search-box {
+  position: absolute;
+  left:128px;
+  top: 25px;
+}
+
+.search-box input {
+  padding-right: 15px;
+  height: 38px;
+  min-height: 38px;
+  border: none;
+  background: #eaeaea;
+  border-radius: 3px !important;
+}
+
+.search-box input:focus {
+  outline: none;
+  background: #dcdcdc;
+  box-shadow: none;
+  border: none;
+}
+
+.search-box .input-group-addon {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 1.975rem;
+  line-height: 2.795rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.search-box i {
+  color: #a0a5b1;
+  font-size: 19px;
+}
+
+
+@media (min-width: 1200px){
+  .form-inline .input-group {
+    width: 450px;
+    margin-left: 30px;
+  }
+}
+
+
+input[type=text] {
+  width: 280px;
+  padding-left: 2.375rem;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 100%;
+}
+
+
+.navbar-custom {
+  background-color: #eaeaea;
+  width: 100%;
+  /*border:1px solid #e8e8e8;*/
+  opacity: 100%;
+}
+
+
+
+.navbar.center .navbar-collapse {
+  text-align: center;
+}
+
+
+.navbar.center .navbar-collapse .nav {
+  float: none;
+  display:inline-block;
+  vertical-align: middle;
+}
+
+
+.icons {
+  margin: 0;
+  padding: 5px;
+  height: 20px;
+  opacity: 50%;
+}
+
+
+.navbar .navbar-nav .nav-link:hover{
+  color: #000000;
+  opacity: 100%;
+}
+
+.navbar .navbar-nav .nav-link {
+  opacity: 50%;
+  position: relative;
+}
+
+.nav-link span {
+  display:block;
+}
+
+li > a.active_route {
+  color: black !important;
+  opacity: 100% !important;
+}
+
+
+.button {
+  display: inline-block;
+  margin: 4px 2px;
+  background-color: none;
+  font-size: 14px;
+  padding-left: 32px;
+  padding-right: 32px;
+  height: 45px;
+  line-height: 50px;
+  text-align: center;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button:hover {
+  transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  background-color: none;
+  color: black;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+  left: -20px;
+  margin: 3px 1px;
+  height: 60px;
+  width: 60px;
+  top: 15px;
+  vertical-align: bottom;
+}
+
+.mglass {
+  display: inline-block;
+  pointer-events: none;
+}
+
+.searchbutton {
+  position: absolute;
+  font-size: 22px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.search:focus + .searchbutton {
+  transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  color: black;
+}
+
+.search {
+  position: absolute;
+  left: auto; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+  background-color: rgb(232, 232, 232);
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  padding: 0;
+  width: 0;
+  height: 100%;
+  z-index: 10;
+  transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+}
+
+.search:focus {
+  width: 463px; /* Bar width+1px */
+  padding: 0 16px 0 0;
+}
+
+.expandright {
+  left: -10px;
+  right: auto; /* Button width-1px */
+}
+
+.expandright:focus {
+  padding: 0 0 0 16px;
+}
+
+
+@media (max-width: 1199px) {
+  .form-inline .input-group {
+    width: 450px;
+    margin-left: 30px;
+  }
+
+  .navbar .navbar-nav .nav-link {
+    padding: 1em 0.7em;
+  }
+  .navbar {
+    padding: 0;
+  }
+  .navbar .navbar-brand {
+    padding: 0 0.7em;
+  }
+
+  .navbar {
+    background-color: #ffffff;
+    width: 100%;
+    height: 87px;
+    border-bottom: 1px solid #d9d9d9;
+    opacity: 100%;
+  }
+
+}
+
+/*@media (max-width: 1199px){*/
+/*  .form-inline .input-group {*/
+/*    width: 450px;*/
+/*    margin-left: 30px;*/
+/*  }*/
+
+/*  .active_route {*/
+/*    border-bottom: 1px solid #000000;*/
+/*    color: #000000;*/
+/*    padding-bottom: 14px;*/
+/*    opacity: 100%;*/
+/*    text-decoration: #000000;*/
+/*  }*/
+
+/*  li > a.active_route {*/
+/*    color: black !important;*/
+/*    opacity: 100% !important;*/
+/*  }*/
+/*}*/
+
+.navbar-brand-small{
+  position: relative;
+  height: 34px;
+  left: 80px;
+  color: #000000;
+  padding-left: 0;
+  padding-right: 50px;
+  font-size: 24px;
+}
+
+@media (max-width: 1198px){
+  .navbar .navbar-nav .nav-link {
+    padding: 1.7em 0.7em;
+  }
+
+
+}
+
+@media (max-width: 1380px){
+  .navbar .navbar-nav .nav-link {
+    padding: 1.7em 0.7em;
+  }
+
+
+}
+
+
+@media (max-width: 992px){
+  .navbar .navbar-nav .nav-link {
+    padding: 1.9em 0.7em;
+  }
+}

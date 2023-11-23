@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+
+.profile-pic{
+  object-fit:cover;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  top: 35px;
+  border-radius: 55px;
+}
+
+
+.flip-card {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  /* justify-content: center; */
+  background-color: transparent;
+  width: 50%;
+  height: 250px;
+  border: 2px solid #ffffff;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  border-radius: 15px;
+
+}
+
+@media screen and (max-width: 1000px) {
+  .flip-card {
+    width: 50%;
+    left: 20px;
+  }
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #e5e5e5;
+  color: black;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, #1F4E79 0%, #1F4E79 35%, #f3f3f3 20%, #efefef 100%);
+}
+
+/* Style the back side */
+.flip-card-back {
+  font-family: 'Baloo Chettan 2', cursive;
+  background-color: #1F4E79;
+  color: white;
+  transform: rotateY(180deg);
+  border-radius: 15px;
+}
+
+
+
+
+
+
+
+* {
+  margin:  0;
+  padding: 0;
+  outline: 0 none;
+  box-sizing: border-box;
+}
+
+*:before, *:after {
+  clear: both;
+  content: "";
+  display: block;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background: rgb(255, 255, 255);
+  overflow-x: hidden;
+
+}
+
+.active-tabs {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
+  /*top: 60%;*/
+  right: 0%;
+  margin: 20px auto;
+
+}
+
+.active-tabs input {
+  opacity: 0;
+  display: none;
+  visibility: hidden;
+}
+
+.btn {
+  background: #dddddd;
+  color: #1F4E79;
+  cursor: pointer;
+  display: block;
+  float: left;
+  font-family: "open sans";
+  font-size: 13px;
+  height: 40px;
+  line-height: 35px;
+  margin-right: 1px;
+  text-align: center;
+  width: 100px;
+  opacity: 0.8;
+  transition: all 0.4s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.active-tabs input:checked + label {
+  background: #1F4E79;
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0px 0 0 0 rgba(0,0,0,0.3);
+  color: #ffffff;
+}
+
+.tabs-container {
+  width: 100%;
+  position: relative;
+  float: left;
+  top: -5px;
+  background: #1F4E79;
+}
+
+.tab-1 ,
+.tab-2 ,
+.tab-3
+{
+  min-height: 200px;
+  max-height: fit-content;
+  width: 100%;
+  box-shadow: 2px 2px 0 0 rgba(0,0,0,0.3);
+  position: absolute;
+  left: 0;
+  opacity: 1;
+  visibility: hidden;
+  transition: all 0.0s;
+}
+
+
+
+.tab-1 p ,
+.tab-2 p ,
+.tab-3 p
+{
+  color: #ffffff;
+  font-family: "Open Sans";
+  font-size: 20px;
+  position: relative;
+  top: 25px;
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  padding-left: 23px;
+  padding-right: 23px;
+  /*outline-color: #cccccc;*/
+}
+
+/*.tab-2 p ,*/
+/*.tab-4 p ,*/
+/*.tab-6 p {*/
+/*  line-height: 300px;*/
+/*  outline-color: #cccccc;*/
+/*}*/
+
+.btn-1:checked ~ .tabs-container .tab-1 ,
+.btn-2:checked ~ .tabs-container .tab-2 ,
+.btn-3:checked ~ .tabs-container .tab-3 ,
+.btn-4:checked ~ .tabs-container .tab-4 ,
+.btn-5:checked ~ .tabs-container .tab-5 ,
+.btn-6:checked ~ .tabs-container .tab-6 ,
+.btn-7:checked ~ .tabs-container .tab-7 {
+  position: relative;
+  visibility: visible;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.button {
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #419EE8;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #419EE8;
+  box-shadow: 0px 3px 10px #419EE8;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+
+
+.connect-btn{
+  position: absolute;
+  /* top: 100px; */
+  left: 35%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+
+}
+
+.message-btn {
+  position: absolute;
+  left: 65%;
+  top: 73.5%;
+  transform: translate(-50%, -50%);
+}
+
+.button-dis {
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000000;
+  background-color: #d5d5d5;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: not-allowed;
+  outline: none;
+  opacity: 50%;
+}
+
+.button-dis:hover {
+  cursor: not-allowed;
+  background-color: #d5d5d5;
+  box-shadow: none;
+  color: #000000;
+  transform: translateY(0px);
+}

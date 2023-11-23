@@ -1,0 +1,62 @@
+
+
+<app-navigation-bar></app-navigation-bar>
+
+
+
+<body>
+<div class="upload-job-box">
+        <button mat-raised-button routerLink="/jobs/createjobpost" style="position: absolute;top: -45%;left: -23%">Create Job Post</button>
+        <button mat-raised-button routerLink="/jobs/myjobs/{{username}}" style="position: absolute;top: -45%;left: 25%">Show My Job Posts</button>
+        <hr style="position: relative;top: -35%;left: -130px">
+
+        <br>
+      <div *ngIf="!isLoaded">
+        <div class="centered">
+          <app-loading></app-loading>
+        </div>
+      </div>
+</div>
+
+
+<div class="tiles-template">
+    <mat-grid-list cols="{{ screenWidth > 1050 ? 3 : 2 }}" rowHeight="450px" >
+
+      <div *ngFor="let jobPost of suggestionsList" >
+        <!--grid-->
+        <mat-grid-tile class="my-tile">
+          <a class="dynamic-shadow" routerLink="/jobs/{{jobPost.jobPostId}}">
+            <div class="text_center">
+              <a class="cl" style="text-align: center;position:relative;top: 17px;font-family: 'Rubik', sans-serif;font-weight: bold;color: black"
+                 routerLink="/jobs/{{jobPost.jobPostId}}">
+                <div class="text-col" >{{jobPost.title.toUpperCase()}} </div>
+              </a>
+              <hr>
+              <!--DETAILS-->
+              <div class="details" style="font-size: 16px;">
+                <span style="font-size: 18px;font-weight: bold"><div class="text-col" >Details</div></span><br>
+                  <div class="text-col" >{{ (jobPost.details.length> 50)? (jobPost.details | slice:0:50)+'..':(jobPost.details) }}</div>
+              </div>
+
+              <br>
+
+              <div class="details" style="font-size: 16px;">
+                <span style="font-size: 18px;font-weight: bold"><div class="text-col">Employment Type:</div></span><br>
+                <div class="text-col">{{jobPost.employmentType}}</div>
+              </div>
+
+            </div>
+
+          </a>
+        </mat-grid-tile>
+
+      </div>
+    </mat-grid-list>
+
+  </div>
+
+
+  
+
+
+</body>

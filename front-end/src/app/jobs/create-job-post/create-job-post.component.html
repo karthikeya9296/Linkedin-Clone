@@ -1,0 +1,39 @@
+<body>
+
+<app-navigation-bar></app-navigation-bar>
+
+
+
+<div class="box">
+  <div class="txt">
+    Create Job Post
+  </div>
+  <form [formGroup]="jobForm">
+
+    <input type="text" [formControlName]="'title'" placeholder="title"  style="padding-left: 13px;padding-right:13px;" autocomplete="off"/>
+
+    <br>
+    <br>
+    <textarea [formControlName]="'details'" rows="3" placeholder="details"></textarea>
+
+
+    <div *ngFor="let s of skills; let i = index">
+      {{ s }}
+      <button  (click)="removeSkill(i)" id="mdiv">
+        <div class="mdiv">
+          <div class="md">   </div>
+        </div>
+    </button>
+    </div>
+    <input type="text" #skill_input placeholder="enter a skill (ex. web-dev)" rows="3" [formControlName]="'requiredSkills'"/>
+    <button class="addKeyword" (click)="addSkill(skill_input)"> add a skill  </button>
+    <textarea [formControlName]="'location'" rows="3" placeholder="location"></textarea>
+    <br>
+    <input type="text" [formControlName]="'employmentType'" placeholder="employmentType"  style="padding-left: 13px;padding-right:13px;" autocomplete="off"/>
+
+
+    <button  class="button" (click)="createJobPost()"><span>Publish</span></button>
+
+  </form>
+</div>
+</body>

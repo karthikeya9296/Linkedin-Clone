@@ -1,0 +1,114 @@
+<app-navigation-bar></app-navigation-bar>
+
+<body>
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+
+
+      <div *ngIf="image != null && image_render == true; else default">
+        <img src="{{image}}" alt="Avatar" class="profile-pic">
+      </div>
+      <ng-template #default>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="Avatar" class="profile-pic">
+      </ng-template>
+
+
+
+
+      <p style="position:relative;top: 90px;font-weight: bold;font-family: 'Barlow Condensed', sans-serif;;font-size: 30px">{{ user_profile_info.username }}</p>
+
+    </div>
+    <div class="flip-card-back">
+      <br><br>
+      <p>First Name: &nbsp;  {{ user_profile_info.first_name }}  </p>
+
+      <p>Last Name:  &nbsp;{{ user_profile_info.last_name }} </p>
+      <p>Company:  &nbsp;{{ user_profile_info.company_name }}</p>
+      <p>Phone:    &nbsp;{{ user_profile_info.phone }} </p>
+      <p>Connected Users:  &nbsp;{{ this.usersList.length }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+<br>
+<br>
+
+<div *ngIf="canrender" class="connect-btn">
+  <app-connect-button  [receiver_user]="user"></app-connect-button>
+</div>
+
+<div *ngIf="connection_status == 3" class="message-btn">
+<!--  <button class="button" title="button" [routerLink]="['/messages/']" [queryParams]="{conversation_name: username}" routerLinkActive="activebutton">Disabled</button>-->
+  <button mat-raised-button class="button" color="accent" [routerLink]="['/messages/']" [queryParams]="{conversation_name: username}"   aria-hidden="true" >
+    <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;Message </button>
+</div>
+
+<div *ngIf="connection_status != 3" class="message-btn">
+  <button mat-raised-button class="button-dis" color="accent" aria-hidden="true">
+    <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;Message </button>
+</div>
+
+
+
+<br>
+<br>
+
+
+<div class="active-tabs">
+
+  <input type="radio" name="active_tabs" id="btn-1" class="btn-1" checked >
+  <label for="btn-1" class="btn" ><i class="fa fa-briefcase" aria-hidden="true"></i> Work</label>
+
+  <input type="radio" name="active_tabs" id="btn-2" class="btn-2">
+  <label for="btn-2" class="btn" ><i class="fa fa-graduation-cap" aria-hidden="true"></i> Studies</label>
+
+  <input type="radio" name="active_tabs" id="btn-3" class="btn-3">
+  <label for="btn-3" class="btn" ><i class="fa fa-user" aria-hidden="true"></i> Abilities</label>
+
+
+  <div class="tabs-container">
+
+    <div class="tab-1">
+      <p *ngIf="(buttonInfo.work_exp && user_profile_info.work_experience.length != 0) || connection_status == 3">{{user_profile_info.work_experience}}</p>
+          <p *ngIf="buttonInfo.work_exp && user_profile_info.work_experience.length == 0"> No Work Experience Added! </p>
+          <div *ngIf="connection_status != 3 && !buttonInfo.work_exp">
+            <p> Private Field.</p>
+            <p> You must be connected with {{username}} to access it.</p>
+          </div>
+
+    </div>
+
+    <div class="tab-3">
+      <p *ngIf="(buttonInfo.abilities && user_profile_info.abilities.length != 0) || connection_status == 3"> {{user_profile_info.abilities}}</p>
+          <p *ngIf="buttonInfo.abilities && user_profile_info.abilities.length == 0"> No Abilities Added! </p>
+          <div *ngIf="connection_status != 3 && !buttonInfo.abilities">
+            <p > Private Field.</p>
+            <p > You must be connected with {{username}} to access it.</p>
+          </div>
+    </div>
+
+    <div class="tab-2">
+      <p *ngIf="(buttonInfo.studies && user_profile_info.studies.length != 0) || connection_status == 3">{{user_profile_info.studies}}</p>
+          <p *ngIf="buttonInfo.studies && user_profile_info.studies.length == 0"> No Studies Added! </p>
+          <div *ngIf="connection_status != 3 && !buttonInfo.studies">
+            <p> Private Field. </p>
+            <p> You must be connected with {{username}} to access it.</p>
+          </div>
+    </div>
+
+    </div>
+
+  </div>
+
+
+
+</body>
+
+
+
+

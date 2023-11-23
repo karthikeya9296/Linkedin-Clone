@@ -1,0 +1,82 @@
+package com.example.tedi_app.service;
+
+import com.example.tedi_app.dto.VoteData;
+import com.example.tedi_app.exceptions.PostNotFoundException;
+import com.example.tedi_app.exceptions.SpringTediException;
+import com.example.tedi_app.model.Action;
+import com.example.tedi_app.model.Post;
+import com.example.tedi_app.model.Vote;
+import com.example.tedi_app.repo.ActionsRepository;
+import com.example.tedi_app.repo.PostRepository;
+import com.example.tedi_app.repo.UserRepository;
+import com.example.tedi_app.repo.VoteRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@AllArgsConstructor
+public class VoteService {
+
+    private final VoteRepository voteRepository;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
+    private final AuthService authService;
+    private final ActionsRepository actionsRepository;
+
+    @Transactional
+    // returns false if it was already liked, so it will be unliked
+    public boolean like(VoteData voteData) {
+
+        Post post = postRepository.findById(voteData.getPostId())
+                .orElseThrow(() -> new PostNotFoundException("Post Not Found with ID - " + voteData.getPostId()));
+//        System.out.println("Post id to be liked: " + post.getPostId());
+        Optional<Vote> voteByPostAndUser = voteRepository.findTopByPostAndUserOrderByVoteIdDesc(post, authService.getCurrentUser());
+
+        if (voteByPostAndUser.isPresent()) { // if have already liked, then unlike
+            Vote v = voteByPostAndUser.orElseThrow(() -> new PostNotFoundException("Post Not Found with ID - " + voteData.getPostId()));
+            post.setLikeCount(post.getLikeCount() - 1);
+            voteRepository.deleteVoteByMyID(v.getVoteId());
+            postRepository.save(post);
+            return false;
+        }
+
+
+        Action a;
+        post.setLikeCount(post.getLikeCount() + 1);
+        actionsRepository.save(Action.new_like_action(post, authService.getCurrentUser(), post.getUser()));
+        voteRepository.save(mapToVote(voteData, post));
+        postRepository.save(post);
+        return true;
+    }
+
+    public boolean has_liked(VoteData voteData) {
+        Post post = postRepository.findById(voteData.getPostId())
+                .orElseThrow(() -> new PostNotFoundException("Post Not Found with ID - " + voteData.getPostId()));
+//        System.out.println("Post id to be liked: " + post.getPostId());
+        Optional<Vote> voteByPostAndUser = voteRepository.findTopByPostAndUserOrderByVoteIdDesc(post, authService.getCurrentUser());
+        if (voteByPostAndUser.isPresent()) {
+            return true;
+        }
+        else return false;
+    }
+
+    private Vote mapToVote(VoteData voteData, Post post) {
+        return Vote.builder()  // change
+                .post(post)
+                .user(authService.getCurrentUser())
+                .build();
+    }
+
+    public static List<VoteData> mapAllToVoteData(List<Vote> vList) {
+        List<VoteData> vdList = new ArrayList<>();
+        for (Vote v : vList) {
+            vdList.add(new VoteData(v.getPost().getPostId()));
+        }
+        return vdList;
+    }
+}

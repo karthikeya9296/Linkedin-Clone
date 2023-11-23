@@ -1,0 +1,19 @@
+
+
+
+<div class="left-box">
+    <div style="font-weight: bold;text-align:center">
+        Conversations
+        <hr>
+
+    </div>
+    <div class="scrollable-box">
+      <div class="users" *ngFor="let user of usersList let i = index" [attr.data-index]="i" >
+          <button [ngClass]="toggle ===  i ? 'active' : 'not-active'" style="font-size: 20px" (click)="change_button_state(user.username,i)"  aria-hidden="true">
+            {{user.username}}
+          </button>
+          <hr style="position:relative;left: 35px;border: 0px;width: 80%">
+      </div>
+    </div>
+
+</div>

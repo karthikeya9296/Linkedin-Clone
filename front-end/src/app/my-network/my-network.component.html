@@ -1,0 +1,84 @@
+
+<body>
+
+  <app-navigation-bar></app-navigation-bar>
+  <br>
+  <div *ngIf="isLoaded == false">
+    <div class="centered"> 
+      <app-loading></app-loading> 
+    </div>
+  </div>
+
+
+<!--My newtwork search view-->
+<div *ngIf="is_query">
+
+  <div *ngFor="let user of search_result">
+
+      <div class="box-view">
+        <div class="avater-query-left">
+
+          <div *ngIf="user.image != null; else default">
+            <a routerLink="/user/{{_authService.getUserName() }}">
+              <img  src="{{user.image}}" alt="Avatar" class="avatar-query">
+            </a>
+          </div>
+          <ng-template #default>
+            <a routerLink="/user/{{_authService.getUserName() }}">
+              <img  src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="Avatar" class="avatar-query">
+            </a>
+          </ng-template>
+
+
+        </div>
+        <div class="username-on-query">
+          <p> <span style="font-weight: bold"> {{ user.username | titlecase }}</span>  </p>
+          <p><span style="font-weight: bold"> {{ user.first_name | titlecase }} {{ user.last_name | titlecase }} </span></p>
+          <p>Working At:  <span style="font-weight: bold"> {{ user.company_name }}</span></p>
+        </div>
+
+
+        <div class="button-connect">
+          <app-connect-button [receiver_user]="user"></app-connect-button>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+
+  <br>
+  <br>
+  <br>
+
+<div *ngIf="!is_query">
+
+  <div class="tiles-template">
+    <mat-grid-list cols="{{ screenWidth > 1050 ? 3 : 2 }}" rowHeight="350px" >
+
+      <div *ngFor="let user of usersList" >
+        <!--grid-->
+        <mat-grid-tile >
+          <div class="box">
+            <a class="cl" routerLink="/user/{{user.username}}">
+              <div *ngIf="user.image != null; else default">
+                <img  src="{{user.image}}" alt="Avatar" class="avatar">
+              </div>
+              <ng-template #default>
+                <img  src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="Avatar" class="avatar">
+              </ng-template>
+            </a>
+
+            <div class="text-center username">  <a class="cl" routerLink="/user/{{user.username}}">{{ user.username | titlecase }}</a> </div>
+            <div class="con-button"> <app-connect-button [receiver_user]="user"></app-connect-button> </div>
+          </div>
+        </mat-grid-tile>
+
+      </div>
+    </mat-grid-list>
+  </div>
+
+</div>
+
+
+</body>

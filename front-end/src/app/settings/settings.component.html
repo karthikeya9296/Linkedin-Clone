@@ -1,0 +1,66 @@
+<!--<div class="left-box" >--><body>
+<app-navigation-bar > </app-navigation-bar>
+
+
+
+<br>
+
+
+<div class="wrapper">
+  <div class="box">
+    <p class="title" style="text-align: center;font-weight: bold;font-size: x-large">Settings</p>
+    <hr>
+    <form class="settings" [formGroup]="settingsForm" >
+      <div class="txt">   Username: <span class="ins-txt"> {{this.userInfo.username}} </span>  </div>
+      <hr class="line">
+      <div class="txt">  First Name: <span class="ins-txt"> {{this.userInfo.first_name}} </span>  </div>
+      <hr class="line">
+      <div class="txt">  Last Name: <span class="ins-txt"> {{this.userInfo.last_name}} </span>  </div>
+      <hr class="line">
+      <div class="txt">  Works At: <span class="ins-txt"> {{this.userInfo.company_name}} </span>  </div>
+      <hr class="line">
+      <div class="txt">  Email: <span class="ins-txt"> {{this.userInfo.email}} </span>  </div>
+      <hr class="line">
+
+      <input id="new_email" [ngClass]="email_exists == true ? 'form-rounded-exists' : 'form-rounded' " type="text" [placeholder]=" email_exists == true ? 'Email Exists' : 'Change email' "
+             [formControlName]="'email'" name="email" required autocomplete="off"/>
+
+      <button class="btn btn-primary btn-round" (click)="changeEmail()">
+        <i class="fa fa-check" aria-hidden="true"></i>
+      </button><br><br>
+
+      <input id="new_pass" class="form-rounded"  type="password" placeholder="Change Password" [formControlName]="'password'" name="password" required autocomplete="off"/>
+      <button  class="btn btn-primary btn-round" (click)="changePassword()">
+        <i class="fa fa-check" aria-hidden="true"></i>
+      </button>
+
+
+
+
+      <div class="image-input-box">
+        <input type="file" id="file" class="form-rounded" (change)="onChange($event)" >
+        <label for="file">
+          <span id="file-name" class="file-box"></span>
+          &nbsp;
+          <div *ngIf="img_sz_exceed || img_inv_format">
+            <button (click)="openDialog(img_sz_exceed,img_inv_format)" class="btn btn-primary" >
+              Upload Image
+            </button>
+          </div>
+          <div *ngIf="!img_sz_exceed && !img_inv_format">
+            <button (click)="changeProfileImage()" class="btn btn-primary">
+              Upload Image
+            </button>
+          </div>
+
+        </label>
+      </div>
+
+
+    </form>
+  </div>
+</div>
+
+
+
+</body>

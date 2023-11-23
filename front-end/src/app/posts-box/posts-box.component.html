@@ -1,0 +1,46 @@
+
+
+
+<div class="row post" *ngFor="let post of posts" style="background-color: #ffffff">
+
+
+
+  <span class="subreddit-info">
+
+    <span>  Posted by <a class="username" routerLink="/user/{{post.username}}">{{post.username}}</a></span>
+
+  </span>
+  <div class="duration"> <div>{{ post.duration }}</div> </div>
+
+  <audio *ngIf="post.file_path != null && post.file_path.includes('post_audio')" controls="controls">
+    <source src="{{post.file_path}}" type="audio/x-wav" />
+  </audio>
+
+  <img *ngIf="post.file_path != null && post.file_path.includes('post_images')" src="{{post.file_path}}" >
+
+  <video *ngIf="post.file_path != null && post.file_path.includes('post_video')" controls>
+    <source src="{{post.file_path}}" type="video/mp4">
+    <source src="{{post.file_path}}" type="video/ogg">
+    Your browser does not support the video tag.
+  </video>
+
+  <br>
+  <br>
+
+  <div>
+    <p class="post-text" [innerHtml]="post.description"></p>
+  </div>
+
+
+
+<app-like [post]="post"></app-like>
+
+</div>
+
+
+<br>
+<div *ngIf="!isLoaded">
+  <div class="centered">
+    <app-loading></app-loading>
+  </div>
+</div>
